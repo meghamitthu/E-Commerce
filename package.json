@@ -1,0 +1,31 @@
+{
+  "name": "ecom",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.8",
+    "nodemon": "^2.0.6",
+    "vue": "^2.6.11",
+    "vue-accessibility-widget": "0.0.18",
+    "vue-axios": "^3.1.1",
+    "vue-router": "^3.4.7",
+    "vuetify": "^2.3.14"
+  },
+  "devDependencies": {
+    "@mdi/font": "^5.7.55",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "deepmerge": "^4.2.2",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
