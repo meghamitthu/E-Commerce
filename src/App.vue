@@ -7,12 +7,8 @@
 </template>
 
 <script>
-// import Home from './Screens/Home.vue'
-// import Cart from './Screens/Cart.vue'
 export default {
   name: 'App',
-  // components: {
-  //   Home, Cart
 }
 </script>
 

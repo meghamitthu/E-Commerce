@@ -44,31 +44,24 @@ export default {
   name: 'GridView',
     data(){
         return{
-            cart : [],
             wishlist: [],
         }
     },
     async mounted ()
     {
       this.$store.dispatch("GET_PRODUCTS")
-      // let{data}=await axios.get('http://localhost:5000/api/v1/product/show')
-      //   this.pros=data;
-      //   console.log=data
     },
     computed : {
     ...mapGetters(['PRODUCTS']),
+    ...mapGetters(['CART'])
   },
     methods : {
         addToCart(product){
-            this.cart.push(product)
-            // console.log(JSON.stringify(this.cart));
-            alert("Product added to Cart")
-            alert(JSON.stringify(this.cart))
-            // this.$emit("cartData", this.cart);
+          this.$store.commit("ADD_TOCART",product)
+          alert(JSON.stringify(product))
         },
         addToWishlist(product){
             this.wishlist.push(product)
-            // console.log(JSON.stringify(this.wishlist));
             alert("Product added to Wishlist")
             alert(JSON.stringify(this.wishlist))
         }

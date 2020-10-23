@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router' 
 import Home from '../Screens/Home'
 import Cart from '../Screens/Cart'
+import Checkout from '../Screens/Checkout'
 Vue.use(VueRouter) 
 const routes =
  [
@@ -14,6 +15,11 @@ const routes =
       path: '/cart',
       name: 'Cart',
       component: Cart
+    },
+    {
+      path: '/checkout',
+      name: 'Checkout',
+      component: Checkout
     },
   ];
   const router = new VueRouter({routes});

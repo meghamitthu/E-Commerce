@@ -1,6 +1,7 @@
 <template>
+<div>
 <v-row width="100%">
-        <v-col cols="12" md="3" justify-center v-for="product in pros" :key="product.product_name">
+        <v-col cols="12" md="3" justify-center v-for="product in CART" :key="product.product_name">
             <img height="200px" width="230px" :src="product.product_image"/>
             <v-card-title><h1>{{product.product_name}}</h1></v-card-title>
             <v-card-subtitle><p><h1>{{product.product_price}}</h1></v-card-subtitle>
@@ -23,6 +24,14 @@
             </v-card>
         </v-col>
 </v-row>
+<p></p>
+<v-btn color= #c5c330 block rounded @click="addAddress()">
+  <h1>Checkout</h1>
+</v-btn>
+<v-spacer></v-spacer>
+<p></p>
+<p></p>
+</div>
 </template>
 
 <script>
@@ -30,30 +39,29 @@
 import axios from 'axios';
 import Vue from 'vue';
 import Axios from 'axios';
-
+import {mapGetters} from 'vuex';
 Vue.use(axios)
 export default {
   name: 'AddToCart',
     data(){
         return{
-            carts : [],
-            wishlist: [],
-            pros : [],
         }
     },
     async mounted ()
     {
-      let{data}=await axios.get('http://localhost:5000/api/v1/product/show')
-        this.pros=data;
-        console.log=data
+      this.$store.getters.CART
     },
+    computed : {
+    ...mapGetters(['CART'])
+  },
     methods : {
         remove(product){
             this.carts.splice(this.carts.indexOf(cart), 1);
-            // console.log(JSON.stringify(this.cart));
             alert("Product added to Cart")
             alert(JSON.stringify(this.carts))
-            // this.$emit("cartData", this.carts);
+        },
+        addAddress(){
+            this.$router.push({name:'Checkout'})
         },
     }
 }
