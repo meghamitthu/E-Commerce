@@ -1,6 +1,6 @@
 <template>
 <v-row width="100%">
-        <v-col cols="12" md="3" justify-center v-for="product in PRODUCTS" :key="product.product_name">
+        <v-col cols="12" md="3" justify-center v-for="product in pros" :key="product.product_name">
             <img height="200px" width="230px" :src="product.product_image"/>
             <v-card-title><h1>{{product.product_name}}</h1></v-card-title>
             <v-card-subtitle><p><h1>{{product.product_price}}</h1></v-card-subtitle>
@@ -9,22 +9,15 @@
                 <v-btn
                 outlined
                 text
-                @click ="addToCart(product)">
-                Add to Cart
+                @click ="remove(product)">
+                Remove
                 </v-btn>
                 <v-btn
                 outlined
                 rounded
                 text
                 color="orange">
-                Buy Now
-                </v-btn>
-                <v-btn
-                icon
-                dark
-                color="red"
-                @click="addToWishlist(product)">
-                <v-icon>mdi-heart</v-icon>
+                Checkout
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -37,41 +30,31 @@
 import axios from 'axios';
 import Vue from 'vue';
 import Axios from 'axios';
-import {mapGetters} from 'vuex';
 
 Vue.use(axios)
 export default {
-  name: 'GridView',
+  name: 'AddToCart',
     data(){
         return{
-            cart : [],
+            carts : [],
             wishlist: [],
+            pros : [],
         }
     },
     async mounted ()
     {
-      this.$store.dispatch("GET_PRODUCTS")
-      // let{data}=await axios.get('http://localhost:5000/api/v1/product/show')
-      //   this.pros=data;
-      //   console.log=data
+      let{data}=await axios.get('http://localhost:5000/api/v1/product/show')
+        this.pros=data;
+        console.log=data
     },
-    computed : {
-    ...mapGetters(['PRODUCTS']),
-  },
     methods : {
-        addToCart(product){
-            this.cart.push(product)
+        remove(product){
+            this.carts.splice(this.carts.indexOf(cart), 1);
             // console.log(JSON.stringify(this.cart));
             alert("Product added to Cart")
-            alert(JSON.stringify(this.cart))
-            // this.$emit("cartData", this.cart);
+            alert(JSON.stringify(this.carts))
+            // this.$emit("cartData", this.carts);
         },
-        addToWishlist(product){
-            this.wishlist.push(product)
-            // console.log(JSON.stringify(this.wishlist));
-            alert("Product added to Wishlist")
-            alert(JSON.stringify(this.wishlist))
-        }
     }
 }
 </script>

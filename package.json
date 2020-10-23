@@ -17,7 +17,8 @@
     "vue-accessibility-widget": "0.0.18",
     "vue-axios": "^3.1.1",
     "vue-router": "^3.4.7",
-    "vuetify": "^2.3.14"
+    "vuetify": "^2.3.14",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@mdi/font": "^5.7.55",

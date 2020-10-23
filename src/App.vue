@@ -1,26 +1,18 @@
 <template>
 <v-app>
-  <v-content>
-<div>
-  <div>
-      <Screens/>
-  </div>
-  <div>
-      <Home/>
-  </div>
-</div>
-  </v-content>
+  <v-main>
+     <router-view></router-view>
+  </v-main>
   </v-app>
 </template>
 
 <script>
-import Home from './Screens/Home.vue'
-
+// import Home from './Screens/Home.vue'
+// import Cart from './Screens/Cart.vue'
 export default {
   name: 'App',
-  components: {
-    Home
-  }
+  // components: {
+  //   Home, Cart
 }
 </script>
 
